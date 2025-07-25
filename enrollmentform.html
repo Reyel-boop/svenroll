@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enrollment Form - San Vicente National High School</title>
+    <meta name="description" content="Online enrollment form at San Vicente National High School.">
+    <meta name="keywords" content="SVNHS enrollment, online form">
+
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- Google Fonts: Poppins for headings, Inter for body text -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        /* Define a color palette for consistency */
+        :root {
+            --primary-blue: #4299e1; /* A friendly, vibrant blue */
+            --light-blue: #63b3ed;    /* A lighter shade of blue */
+            --dark-blue: #2c5282;     /* A deep blue for text and accents */
+            --background-dark: #07739e; /* Dark blue for the overall background */
+            --form-bg: #ffffff;      /* White for the form's background */
+            --input-bg: #e0f2fe;     /* Very light blue for input fields */
+            --input-border: #90cdf4; /* Slightly darker light blue for input borders */
+            --text-dark: #2d3748;    /* Dark gray for most text */
+            --text-light: #ffffff;   /* White for headings and button text */
+            --button-hover: #1565c0; /* Darker blue for button hover effect */
+            --focus-ring: rgba(66, 153, 225, 0.5); /* Semi-transparent blue for focus outline */
+            --box-shadow-light: rgba(0, 0, 0, 0.1); /* Light shadow for elements */
+            --error-red: #e53e3e;     /* Red for validation errors */
+        }
+
+        body {
+            /* Gradient background for a dynamic, modern feel */
+            background: linear-gradient(135deg, var(--background-dark) 0%, #1a202c 100%);
+            font-family: 'Inter', sans-serif; /* Modern, readable font */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh; /* Ensures content is centered vertically */
+            position: relative; /* For positioning the back button */
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+
+        h2 {
+            text-align: center;
+            margin-top: 40px;
+            margin-bottom: 30px;
+            color: var(--text-light) !important; /* Heading is prominently white */
+            font-family: 'Poppins', sans-serif; /* A more impactful font for headings */
+            font-size: 2.5em; /* Larger heading for emphasis */
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3); /* Subtle shadow for depth */
+            letter-spacing: 0.05em; /* A little space between letters */
+        }
+
+        form {
+            background: var(--form-bg); /* White form background */
+            max-width: 550px; /* Wider form for better layout */
+            width: 90%; /* Responsive width for smaller screens */
+            margin: 20px auto;
+            padding: 40px; /* Generous padding inside the form */
+            border-radius: 15px; /* More rounded corners */
+            box-shadow: 0 10px 30px var(--box-shadow-light); /* Stronger, softer shadow */
+            position: relative;
+            overflow: hidden; /* Important for animated pseudo-elements */
+            z-index: 1; /* Ensure form content is above animated elements */
+        }
+        
+        /* Interactive, animated background elements within the form */
+        form::before, form::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.1; /* Subtle transparency */
+            z-index: 0; /* Behind the form content */
+            filter: blur(50px); /* Soft blur effect */
+        }
+
+        form::before {
+            top: -50px;
+            left: -50px;
+            width: 150px;
+            height: 150px;
+            background: var(--primary-blue);
+            animation: moveCircle1 15s infinite alternate ease-in-out;
+        }
+
+        form::after {
+            bottom: -70px;
+            right: -70px;
+            width: 200px;
+            height: 200px;
+            background: var(--light-blue);
+            animation: moveCircle2 20s infinite alternate-reverse ease-in-out;
+        }
+
+        /* Keyframe animations for the floating circles */
+        @keyframes moveCircle1 {
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(20px, 30px) scale(1.1); }
+            100% { transform: translate(0, 0) scale(1); }
+        }
+
+        @keyframes moveCircle2 {
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(-30px, -20px) scale(1.2); }
+            100% { transform: translate(0, 0) scale(1); }
+        }
+
+        .form-group {
+            margin-bottom: 25px; /* Increased spacing between form groups */
+            position: relative; /* For positioning error messages */
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-dark);
+            font-weight: 600; /* Bolder labels */
+            font-size: 0.95em;
+        }
+
+        .input-wrapper {
+            display: flex;
+            align-items: center;
+            background: var(--input-bg); /* Light blue background for inputs */
+            border-radius: 8px; /* More rounded input fields */
+            padding: 10px 15px; /* More padding inside the wrapper */
+            border: 2px solid var(--input-border); /* Clear border */
+            transition: all 0.3s ease; /* Smooth transition for focus effects */
+            z-index: 1; /* Ensure content is above form's pseudo-elements */
+        }
+        
+        .input-wrapper:focus-within {
+            border-color: var(--primary-blue); /* Highlight border on focus */
+            box-shadow: 0 0 0 3px var(--focus-ring); /* Soft glow on focus */
+        }
+
+        .input-wrapper i {
+            color: var(--dark-blue); /* Dark blue icons */
+            margin-right: 12px;
+            font-size: 1.25em; /* Larger icons */
+            transition: color 0.3s ease; /* Smooth icon color change */
+        }
+
+        .input-wrapper:focus-within i {
+            color: var(--primary-blue); /* Icon color changes on focus */
+        }
+
+        input, select {
+            border: none;
+            background: transparent;
+            outline: none;
+            font-size: 1.05em; /* Slightly larger text in inputs */
+            width: 100%;
+            padding: 4px 0;
+            color: var(--text-dark);
+            font-family: 'Inter', sans-serif;
+        }
+        input::placeholder {
+            color: #a0aec0; /* Lighter, subtle placeholder text */
+        }
+        select {
+            appearance: none; /* Hide default browser select arrow */
+            /* Custom SVG arrow for select dropdown */
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%232c5282'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            background-size: 1.2em;
+            padding-right: 30px; /* Space for the custom arrow */
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            /* Gradient background for a modern button look */
+            background: linear-gradient(to right, var(--primary-blue), var(--light-blue));
+            color: var(--text-light);
+            border: none;
+            padding: 15px 0;
+            border-radius: 8px;
+            font-size: 1.2em;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease; /* Smooth transition for hover/active effects */
+            margin-top: 25px;
+            box-shadow: 0 5px 15px rgba(66, 153, 225, 0.4); /* Blue shadow for depth */
+            display: flex; /* For centering content and icon */
+            align-items: center;
+            justify-content: center;
+            letter-spacing: 0.05em;
+        }
+        button[type="submit"]:hover {
+            transform: translateY(-3px); /* Lifts button slightly on hover */
+            box-shadow: 0 8px 20px rgba(66, 153, 225, 0.6); /* Stronger shadow on hover */
+            background: linear-gradient(to right, var(--light-blue), var(--primary-blue)); /* Subtle gradient shift on hover */
+        }
+        button[type="submit"]:active {
+            transform: translateY(0); /* Presses button down on click */
+            box-shadow: 0 2px 10px rgba(66, 153, 225, 0.4);
+        }
+        button[type="submit"] i {
+            margin-right: 10px; /* Space between icon and text */
+            font-size: 1.1em;
+        }
+
+        /* Styling for the back button */
+        .back-btn {
+            position: fixed; /* Stays in place when scrolling */
+            top: 20px;
+            left: 20px;
+            width: 50px; /* Slightly smaller */
+            height: 50px;
+            border-radius: 50%;
+            background: #fff;
+            border: none;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 20; /* Ensure it's on top */
+            padding: 0;
+            transition: all 0.3s ease;
+        }
+        .back-btn:hover {
+            transform: scale(1.05); /* Slightly enlarge on hover */
+            box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+        }
+        .back-btn svg { /* Target the SVG directly for styling */
+            color: var(--dark-blue);
+            font-size: 1.8em;
+            width: 1em;
+            height: 1em;
+            transition: color 0.3s ease;
+        }
+        .back-btn:hover svg {
+            color: var(--primary-blue); /* Icon color changes on hover */
+        }
+
+        /* Validation Feedback (Interactive) */
+        .error-message {
+            color: var(--error-red); /* Red color for error messages */
+            font-size: 0.85em;
+            margin-top: 5px;
+            display: none; /* Hidden by default */
+            font-weight: 500;
+        }
+        /* Show error message when input is invalid AND not empty (user has typed something) */
+        input:invalid:not(:placeholder-shown) + .error-message,
+        select:invalid:not([value=""]) + .error-message {
+            display: block; /* Make the error message visible */
+        }
+        /* Highlight invalid input fields with a red border */
+        input:invalid, select:invalid {
+            border-color: var(--error-red) !important; /* Override other borders */
+            box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.3) !important; /* Red glow for errors */
+        }
+
+        /* Confirmation Modal (Interactive) */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed;
+            z-index: 100; /* High z-index to overlay everything */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.6); /* Dark, semi-transparent overlay */
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(5px); /* Frosted glass effect */
+        }
+
+        .modal-content {
+            background-color: var(--form-bg);
+            margin: auto;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.4); /* Stronger shadow for modal */
+            text-align: center;
+            max-width: 450px;
+            transform: scale(0.9); /* Starts slightly smaller */
+            opacity: 0; /* Starts hidden */
+            transition: all 0.3s ease-out; /* Smooth animation for appearance */
+        }
+        .modal.show .modal-content {
+            transform: scale(1); /* Scales to full size */
+            opacity: 1; /* Fades in */
+        }
+
+        .modal-content h3 {
+            color: var(--dark-blue);
+            font-family: 'Poppins', sans-serif;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            border-bottom: 2px solid var(--primary-blue); /* Underline effect */
+            padding-bottom: 10px;
+            display: inline-block; /* To make border-bottom only under text */
+        }
+
+        .modal-content p {
+            color: var(--text-dark);
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .modal-content button {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .modal-content button:hover {
+            background-color: var(--light-blue);
+            transform: translateY(-2px); /* Lift effect on modal button */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 600px) {
+            h2 {
+                font-size: 2em;
+                margin-top: 20px;
+            }
+            form {
+                padding: 25px;
+                border-radius: 10px;
+                margin: 15px auto;
+            }
+            .form-group {
+                margin-bottom: 20px;
+            }
+            label {
+                font-size: 0.9em;
+            }
+            input, select {
+                font-size: 0.95em;
+            }
+            button[type="submit"] {
+                font-size: 1.05em;
+                padding: 12px 0;
+            }
+            .back-btn {
+                width: 40px;
+                height: 40px;
+                top: 15px;
+                left: 15px;
+            }
+            .back-btn svg {
+                font-size: 1.5em;
+            }
+            .modal-content {
+                max-width: 90%;
+                padding: 20px;
+            }
+        }
+
+        /* Styles for disabling the file upload section */
+        #fileUploadContainer.disabled { /* Targeting by ID and class for specificity */
+            opacity: 0.5;
+            pointer-events: none; /* Prevents clicks on elements within */
+            filter: grayscale(100%); /* Visually grays out the section */
+            transition: opacity 0.3s ease, filter 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <button class="back-btn" onclick="window.location.href='enrollment.html'" aria-label="Go back to Enrollment Guide">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+    </button>
+
+    <h2>Enrollment Form</h2>
+    <form id="enrollmentForm" action="index.html" method="get">
+        <div class="form-group">
+            <label for="gradelevel">Grade Level to Enroll</label>
+            <div class="input-wrapper">
+                <i class="fa fa-graduation-cap"></i>
+                <select id="gradelevel" name="gradelevel" required>
+                    <option value="">Select Grade Level</option>
+                   
+                    <option value="Grade 11">Grade 11</option>
+                    <option value="Grade 12">Grade 12</option>
+                </select>
+            </div>
+            <p class="error-message" aria-live="polite">Please select the grade level you wish to enroll in.</p>
+        </div>
+
+        <div class="form-group">
+            <label for="studentType">Student Type</label>
+            <div class="input-wrapper">
+                <i class="fa fa-user-graduate"></i>
+                <select id="studentType" name="studentType" required>
+                    <option value="">Select Student Type</option>
+                    <option value="Old Student">Old Student</option>
+                    <option value="New Student">New Student</option>
+                    <option value="Transferee">Transferee</option>
+                </select>
+            </div>
+            <p class="error-message" aria-live="polite">Please select your student type.</p>
+        </div>
+
+        <div class="form-group">
+            <label for="fullname">Full Name</label>
+            <div class="input-wrapper">
+                <i class="fa fa-user"></i>
+                <input type="text" id="fullname" name="fullname" placeholder="Juan Dela Cruz" required autocomplete="name">
+            </div>
+            <p class="error-message" aria-live="polite">Please enter your full name (e.g., Juan Dela Cruz).</p>
+        </div>
+
+        <div class="form-group">
+            <label for="lrn">LRN (Learner Reference Number)</label>
+            <div class="input-wrapper">
+                <i class="fa fa-id-card"></i>
+                <input type="text" id="lrn" name="lrn" placeholder="e.g., 123456789012" required pattern="[0-9]{12}" maxlength="12" inputmode="numeric" title="Please enter a 12-digit LRN (numbers only)." autocomplete="off">
+            </div>
+            <p class="error-message" aria-live="polite">Please enter a valid 12-digit LRN (numbers only).</p>
+        </div>
+
+        <div class="form-group">
+            <label for="dob">Date of Birth</label>
+            <div class="input-wrapper">
+                <i class="fa fa-calendar-alt"></i>
+                <input type="date" id="dob" name="dob" required autocomplete="bday">
+            </div>
+            <p class="error-message" aria-live="polite">Please enter your date of birth.</p>
+        </div>
+
+        <div class="form-group">
+            <label for="gender">Gender</label>
+            <div class="input-wrapper">
+                <i class="fa fa-venus-mars"></i>
+                <select id="gender" name="gender" required autocomplete="sex">
+                    <option value="">Select Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Prefer not to say">Prefer not to say</option>
+                </select>
+            </div>
+            <p class="error-message" aria-live="polite">Please select your gender.</p>
+        </div>
+
+        <div class="form-group">
+            <label for="address">Full Address</label>
+            <div class="input-wrapper">
+                <i class="fa fa-home"></i>
+                <input type="text" id="address" name="address" placeholder="House No., Street, Barangay, City/Municipality, Province" required autocomplete="street-address">
+            </div>
+            <p class="error-message" aria-live="polite">Please enter your complete address.</p>
+        </div>
+
+        <div class="form-group">
+            <label for="contact">Contact Number</label>
+            <div class="input-wrapper">
+                <i class="fa fa-phone"></i>
+                <input type="tel" id="contact" name="contact" placeholder="e.g., 09171234567" required pattern="[0-9]{10,11}" title="Please enter a valid Philippine mobile number (10 or 11 digits)." autocomplete="tel-national">
+            </div>
+            <p class="error-message" aria-live="polite">Please enter a valid 10 or 11-digit contact number.</p>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email Address</label>
+            <div class="input-wrapper">
+                <i class="fa fa-envelope"></i>
+                <input type="email" id="email" name="email" placeholder="you@example.com" required autocomplete="email">
+            </div>
+            <p class="error-message" aria-live="polite">Please enter a valid email address.</p>
+        </div>
+
+        <div class="form-group">
+            <label for="guardian">Parent/Guardian Full Name</label>
+            <div class="input-wrapper">
+                <i class="fa fa-user-shield"></i>
+                <input type="text" id="guardian" name="guardian" placeholder="Parent or Guardian's Name" required autocomplete="cc-name">
+            </div>
+            <p class="error-message" aria-live="polite">Please enter your parent/guardian's full name.</p>
+        </div>
+
+        <div class="form-group">
+            <label for="prevschool">Previous School Attended (if transferee)</label>
+            <div class="input-wrapper">
+                <i class="fa fa-school"></i>
+                <input type="text" id="prevschool" name="prevschool" placeholder="Name of your Grade 10 school" required autocomplete="organization">
+            </div>
+            <p class="error-message" aria-live="polite">Please enter the name of your previous school.</p>
+        </div>
+
+        <!-- File Uploads Section - Integrated from previous request -->
+        <div id="fileUploadContainer" class="bg-white p-6 sm:p-8 rounded-3xl w-full border border-gray-200 shadow-lg mt-8 transition-all duration-300 ease-in-out">
+            <h3 class="text-2xl font-extrabold text-gray-800 mb-6 text-center tracking-wide">Upload Required Documents</h3>
+
+            <div class="space-y-6">
+                <!-- SF9 Upload -->
+                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-3 sm:space-y-0 sm:space-x-6 p-4 bg-gray-50 rounded-lg shadow-sm">
+                    <span class="text-lg font-semibold text-gray-700 sm:w-1/3">SF9 (Scholastic File 9):</span>
+                    <div class="flex items-center space-x-3 sm:flex-grow">
+                        <label for="sf9File" class="relative cursor-pointer bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-5 rounded-md shadow-md transition duration-300 ease-in-out transform hover:scale-105">
+                            <span>Choose File</span>
+                            <input id="sf9File" name="sf9File" type="file" class="sr-only" multiple onchange="displayFileName(this)">
+                        </label>
+                        <span id="sf9FileName" class="text-gray-500 text-sm italic truncate max-w-[calc(100%-120px)]">No file chosen</span>
+                    </div>
+                </div>
+
+                <!-- SF10 Upload -->
+                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-3 sm:space-y-0 sm:space-x-6 p-4 bg-gray-50 rounded-lg shadow-sm">
+                    <span class="text-lg font-semibold text-gray-700 sm:w-1/3">SF10 (Scholastic File 10):</span>
+                    <div class="flex items-center space-x-3 sm:flex-grow">
+                        <label for="sf10File" class="relative cursor-pointer bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-5 rounded-md shadow-md transition duration-300 ease-in-out transform hover:scale-105">
+                            <span>Choose File</span>
+                            <input id="sf10File" name="sf10File" type="file" class="sr-only" multiple onchange="displayFileName(this)">
+                        </label>
+                        <span id="sf10FileName" class="text-gray-500 text-sm italic truncate max-w-[calc(100%-120px)]">No file chosen</span>
+                    </div>
+                </div>
+
+                <!-- Good Moral Upload -->
+                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-3 sm:space-y-0 sm:space-x-6 p-4 bg-gray-50 rounded-lg shadow-sm">
+                    <span class="text-lg font-semibold text-gray-700 sm:w-1/3">Good Moral Certificate:</span>
+                    <div class="flex items-center space-x-3 sm:flex-grow">
+                        <label for="goodMoralFile" class="relative cursor-pointer bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-5 rounded-md shadow-md transition duration-300 ease-in-out transform hover:scale-105">
+                            <span>Choose File</span>
+                            <input id="goodMoralFile" name="goodMoralFile" type="file" class="sr-only" multiple onchange="displayFileName(this)">
+                        </label>
+                        <span id="goodMoralFileName" class="text-gray-500 text-sm italic truncate max-w-[calc(100%-120px)]">No file chosen</span>
+                    </div>
+                </div>
+
+                <!-- NSO Upload -->
+                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-3 sm:space-y-0 sm:space-x-6 p-4 bg-gray-50 rounded-lg shadow-sm">
+                    <span class="text-lg font-semibold text-gray-700 sm:w-1/3">PSA (NSO) Birth Certificate:</span>
+                    <div class="flex items-center space-x-3 sm:flex-grow">
+                        <label for="nsoFile" class="relative cursor-pointer bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-5 rounded-md shadow-md transition duration-300 ease-in-out transform hover:scale-105">
+                            <span>Choose File</span>
+                            <input id="nsoFile" name="nsoFile" type="file" class="sr-only" multiple onchange="displayFileName(this)">
+                        </label>
+                        <span id="nsoFileName" class="text-gray-500 text-sm italic truncate max-w-[calc(100%-120px)]">No file chosen</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End File Uploads Section -->
+
+        <button type="submit"><i class="fa fa-paper-plane"></i> Submit Enrollment</button>
+    </form>
+
+    <div id="confirmationModal" class="modal">
+        <div class="modal-content">
+            <h3>Enrollment Submitted!</h3>
+            <p>Thank you for submitting your enrollment form for **San Vicente National High School**. We've received your information successfully.</p>
+            <p>Kindly remember to proceed with **Step 2: Submission of Requirements** by bringing all necessary physical documents to the school office in Panabo City. We eagerly await to welcome you!</p>
+            <button id="closeModalBtn">Got It!</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('enrollmentForm');
+            const modal = document.getElementById('confirmationModal');
+            const closeModalBtn = document.getElementById('closeModalBtn');
+            const lrnInput = document.getElementById('lrn');
+            const contactInput = document.getElementById('contact');
+
+            const studentTypeSelect = document.getElementById('studentType');
+            const fileUploadContainer = document.getElementById('fileUploadContainer');
+            const fileInputs = fileUploadContainer.querySelectorAll('input[type="file"]');
+            const fileNameSpans = fileUploadContainer.querySelectorAll('span[id$="FileName"]');
+
+
+            // Function to display selected file names
+            function displayFileName(input) {
+                const fileNameSpanId = input.id + 'FileName';
+                const fileNameSpan = document.getElementById(fileNameSpanId);
+
+                if (input.files.length > 0) {
+                    if (input.files.length === 1) {
+                        fileNameSpan.textContent = input.files[0].name;
+                    } else {
+                        fileNameSpan.textContent = `${input.files.length} files selected`;
+                    }
+                } else {
+                    fileNameSpan.textContent = 'No file chosen';
+                }
+            }
+
+            // Function to toggle file upload section visibility and interactivity
+            function toggleFileUploads() {
+                const selectedType = studentTypeSelect.value;
+                const disableUploads = selectedType === 'Old Student';
+
+                if (disableUploads) {
+                    fileUploadContainer.classList.add('disabled'); // Apply the disabled class
+                    fileInputs.forEach(input => {
+                        input.disabled = true;
+                        input.removeAttribute('required'); // Remove required attribute when disabled
+                        input.value = ''; // Clear selected files
+                    });
+                    fileNameSpans.forEach(span => {
+                        span.textContent = 'No file chosen';
+                    });
+                } else {
+                    fileUploadContainer.classList.remove('disabled'); // Remove the disabled class
+                    fileInputs.forEach(input => {
+                        input.disabled = false;
+                        // Add required attribute back for New Student/Transferee
+                        input.setAttribute('required', ''); 
+                    });
+                }
+            }
+
+            // --- Real-time Input Validation ---
+            // LRN validation: Ensure it's 12 digits and only numbers
+            lrnInput.addEventListener('input', function() {
+                // Remove any non-digit characters
+                this.value = this.value.replace(/\D/g, ''); 
+                if (this.value.length !== 12 && this.value.length > 0) {
+                    this.setCustomValidity('LRN must be exactly 12 digits.');
+                } else {
+                    this.setCustomValidity(''); // Clear custom message if valid
+                }
+            });
+
+            // Contact Number validation: Ensure it's 10-11 digits and only numbers
+            contactInput.addEventListener('input', function() {
+                // Remove any non-digit characters
+                this.value = this.value.replace(/\D/g, ''); 
+                if (this.value.length < 10 || this.value.length > 11) {
+                    this.setCustomValidity('Contact number must be 10 or 11 digits (Philippine format).');
+                } else {
+                    this.setCustomValidity('');
+                }
+            });
+
+            // Initial call to set the state of file uploads on page load
+            toggleFileUploads();
+
+            // Event listener for student type change
+            studentTypeSelect.addEventListener('change', toggleFileUploads);
+
+            // --- Form Submission Handling ---
+            form.addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent the default form submission (page reload)
+
+                // Trigger built-in HTML5 validation on all required fields
+                let allValid = true;
+                this.querySelectorAll('[required]').forEach(input => {
+                    // Skip validation for disabled file inputs
+                    if (input.type === 'file' && input.disabled) {
+                        return;
+                    }
+                    
+                    // Check validity and report if invalid to show native browser hints
+                    if (!input.checkValidity()) {
+                        allValid = false;
+                        input.reportValidity(); 
+                    }
+                });
+
+                if (allValid) {
+                    // --- Simulate successful form submission ---
+                    // In a real application, you would send this data to a server using fetch() or XMLHttpRequest
+                    console.log('Form data submitted:', Object.fromEntries(new FormData(this).entries()));
+
+                    // Show the confirmation modal with a slight delay for smooth animation
+                    modal.style.display = 'flex'; // Make the modal visible
+                    setTimeout(() => modal.classList.add('show'), 10); // Trigger the CSS transition
+                } else {
+                    // If not all fields are valid, the browser's native validation messages will appear.
+                    // You could add a general alert here if needed, but per-field messages are better.
+                    // alert('Please correct the errors in the form before submitting.');
+                }
+            });
+
+            // --- Modal Interaction ---
+            closeModalBtn.addEventListener('click', () => {
+                modal.classList.remove('show'); // Start hide animation
+                modal.addEventListener('transitionend', function handler() {
+                    modal.style.display = 'none'; // Hide completely after animation
+                    modal.removeEventListener('transitionend', handler); // Clean up event listener
+                    window.location.href = 'index.html'; // Redirect to home page
+                });
+            });
+
+            // Close modal if user clicks outside the modal content
+            modal.addEventListener('click', (event) => {
+                if (event.target === modal) { // Check if the click was directly on the overlay
+                    modal.classList.remove('show');
+                    modal.addEventListener('transitionend', function handler() {
+                        modal.style.display = 'none';
+                        modal.removeEventListener('transitionend', handler);
+                        window.location.href = 'index.html'; // Redirect to home page
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

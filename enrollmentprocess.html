@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enrollment Process Guide - San Vicente National High School</title>
+    <meta name="description" content="Step-by-step guide to the Senior High School enrollment process at San Vicente National High School. Learn about requirements, procedures, and important dates.">
+    <meta name="keywords" content="San Vicente National High School enrollment, SHS enrollment guide, how to enroll, Senior High School admission, enrollment requirements Davao City">
+    <meta name="author" content="San Vicente National High School">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom styles from the main site for consistency */
+        :root {
+            --primary-blue: #4299e1; /* Tailwind blue-500 */
+            --light-blue: #63b3ed;    /* Tailwind blue-400 */
+            --dark-blue: #2c5282;     /* A darker blue for accents/text */
+            --background-light: #e0f2fe; /* Lighter, more vibrant blue background (Tailwind blue-50) */
+            --text-dark: #333;
+            --text-light: #ffffff;
+            --gray-subtle: #90cdf4; /* Lighter blue for dots, closer to main theme */
+            --shadow-light: rgba(0, 0, 0, 0.08);
+            --shadow-medium: rgba(0, 0, 0, 0.15);
+            --shadow-cta: rgba(66, 153, 225, 0.3);
+            --shadow-cta-hover: rgba(66, 153, 225, 0.4);
+
+            /* New vibrant colors for steps/sections */
+            --vibrant-green: #38a169; /* Tailwind green-600 */
+            --vibrant-yellow: #d69e2e; /* Tailwind yellow-600 */
+            --vibrant-purple: #805ad5; /* Tailwind purple-600 */
+            --vibrant-red: #e53e3e; /* Tailwind red-600 */
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background-light); /* Apply new lighter background */
+            color: var(--text-dark);
+            line-height: 1.7;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark-blue);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.5rem;
+        }
+
+        /* Header Specifics */
+        .header-title {
+            color: var(--dark-blue);
+            transition: color 0.3s ease;
+        }
+        .header-title:hover {
+            color: var(--primary-blue);
+        }
+        .nav-link {
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary-blue);
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* General Content Styling */
+        .content-section {
+            background-color: var(--text-light);
+            border-radius: 2rem;
+            box-shadow: 0 8px 20px var(--shadow-light);
+            padding: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .step-card {
+            background-color: #f0f9ff; /* Very light blue background for cards (Tailwind blue-50) */
+            border-left: 5px solid var(--primary-blue); /* Keep primary blue for border */
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        /* Unique border colors for each step to make it more colorful */
+        .step-card:nth-child(1) { border-left-color: var(--vibrant-green); }
+        .step-card:nth-child(2) { border-left-color: var(--vibrant-yellow); }
+        .step-card:nth-child(3) { border-left-color: var(--vibrant-purple); }
+        .step-card:nth-child(4) { border-left-color: var(--vibrant-red); }
+
+
+        .step-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+        }
+
+        .step-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-blue); /* Default blue */
+            margin-right: 1.5rem;
+            line-height: 1;
+        }
+        /* Make step numbers match their border colors */
+        .step-card:nth-child(1) .step-number { color: var(--vibrant-green); }
+        .step-card:nth-child(2) .step-number { color: var(--vibrant-yellow); }
+        .step-card:nth-child(3) .step-number { color: var(--vibrant-purple); }
+        .step-card:nth-child(4) .step-number { color: var(--vibrant-red); }
+
+        .faq-item {
+            background-color: #fefefe; /* Even lighter background for FAQ */
+            border: 1px solid #e0f2fe; /* Lighter border */
+            border-radius: 0.75rem;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+        }
+
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            background-color: #e2f0fe; /* Slightly more vibrant gray-100 */
+            transition: background-color 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background-color: #d1ecfd; /* Even more vibrant on hover */
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+        }
+
+        .faq-answer p {
+            padding-bottom: 1rem;
+        }
+
+        .faq-item.open .faq-answer {
+            max-height: 200px; /* Adjust as needed */
+            padding-top: 1rem;
+        }
+
+        .faq-arrow {
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.open .faq-arrow {
+            transform: rotate(180deg);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-image: linear-gradient(to right, var(--primary-blue), var(--light-blue));
+            color: var(--text-light);
+            padding: 0.9rem 2.5rem;
+            border-radius: 9999px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-image 0.3s ease;
+            box-shadow: 0 6px 15px var(--shadow-cta);
+            letter-spacing: 0.025em;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px var(--shadow-cta-hover);
+            background-image: linear-gradient(to right, var(--light-blue), var(--primary-blue));
+        }
+
+        /* Footer */
+        .footer-section {
+            background-color: #1a202c; /* Tailwind gray-900, slightly darker */
+            padding: 2.5rem 1.5rem;
+            border-radius: 4rem 4rem 0 0;
+        }
+        .footer-link {
+            color: #90cdf4; /* Lighter blue for footer links */
+            transition: color 0.3s ease;
+        }
+        .footer-link:hover {
+            color: var(--primary-blue);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            header h1 {
+                font-size: 1.75rem;
+            }
+            header nav ul {
+                display: none; /* Hide nav on small screens for simplicity; consider hamburger for real */
+            }
+            .content-section {
+                padding: 1.5rem;
+                border-radius: 1.5rem;
+            }
+            .step-card {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .step-number {
+                margin-bottom: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="bg-white shadow-md py-4">
+        <div class="container flex justify-between items-center">
+            <a href="index.html" class="text-3xl font-bold header-title" aria-label="San Vicente National High School Home">San Vicente National High School</a>
+            <nav>
+                <ul class="flex space-x-6">
+                    <li><a href="index.html" class="text-gray-600 hover:text-blue-500 transition duration-300">Home</a></li>
+                    <li><a href="index.html" class="text-gray-600 hover:text-blue-500 transition duration-300">Senior High School </a></li>
+                    <li><a href="enrollment.html" class="text-gray-600 hover:text-blue-500 transition duration-300 font-semibold">Enroll</a></li>
+                     <li><a href="enrollmentprocess.html" class="text-gray-600 hover:text-blue-500 transition duration-300">Enrollment Guide</a></li>
+                    <li><a href="facultymembers.html" class="text-gray-600 hover:text-blue-500 transition duration-300">Faculty</a></li>
+                    <li><a href="contact.html" class="text-gray-600 hover:text-blue-500 transition duration-300">Contact</a></li>  </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="py-12">
+        <div class="container">
+            <h1 class="text-5xl font-extrabold text-center mb-12 hero-title">Your Guide to Enrollment at SVNHS</h1>
+
+            <section class="content-section mb-12">
+                <h2 class="text-4xl font-bold mb-8 text-center text-blue-700">Seamless Enrollment: Your Future Starts Here!</h2>
+                <p class="text-lg text-gray-700 mb-8 text-center max-w-3xl mx-auto">
+                    Welcome to San Vicente National High School, located in Panabo City, Davao Region! We're thrilled you're considering joining our community. This guide will walk you through the simple steps to enroll in our Senior High School program. Get ready to discover your path!
+                </p>
+
+                <h3 class="text-3xl font-semibold mb-6 text-dark-blue">Enrollment Process Steps:</h3>
+                <div class="space-y-6">
+                    <div class="step-card flex items-start">
+                        <span class="step-number">1</span>
+                        <div>
+                            <h4 class="text-2xl font-bold text-dark-blue mb-2">Pre-Registration (Online)</h4>
+                            <p class="text-gray-700">
+                                Start your journey by filling out our online pre-registration form. This helps us gather initial information and determine your preferred strand. Make sure to provide accurate details.
+                            </p>
+                            <p class="text-sm text-gray-600 mt-2"><em>*A link to the online form will be activated during the official enrollment period. Please check our main website for announcements on specific dates.</em></p>
+                        </div>
+                    </div>
+
+                    <div class="step-card flex items-start">
+                        <span class="step-number">2</span>
+                        <div>
+                            <h4 class="text-2xl font-bold text-dark-blue mb-2">Submission of Requirements</h4>
+                            <p class="text-gray-700">
+                                Once pre-registered, prepare and submit the necessary documents to the school's enrollment office. Ensure all copies are clear and complete. Our friendly staff will be on hand to assist you.
+                            </p>
+                            <ul class="list-disc list-inside text-gray-600 mt-3 space-y-1">
+                                <li>Original and photocopy of **Grade 10 Report Card (SF9)**</li>
+                                <li>**Certificate of Good Moral Character**</li>
+                                <li>**PSA Birth Certificate** (Original and photocopy)</li>
+                                <li>**2x2 ID pictures** (2 pieces, white background)</li>
+                                <li>Photocopy of **Parent's/Guardian's Valid ID**</li>
+                                <li>(Optional) **ESC Certificate** or **QVR Certificate** for private school completers</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="step-card flex items-start">
+                        <span class="step-number">3</span>
+                        <div>
+                            <h4 class="text-2xl font-bold text-dark-blue mb-2">Interview & Strand Confirmation</h4>
+                            <p class="text-gray-700">
+                                A brief interview will be conducted to discuss your academic interests, career goals, and to confirm your chosen Senior High School strand. This is also a great opportunity for you to ask any questions you may have about SVNHS.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="step-card flex items-start">
+                        <span class="step-number">4</span>
+                        <div>
+                            <h4 class="text-2xl font-bold text-dark-blue mb-2">Enrollment Confirmation</h4>
+                            <p class="text-gray-700">
+                                After successful submission of requirements and interview, your enrollment will be confirmed! You'll receive important details regarding orientation, class schedules, and school policies to get you ready for the academic year.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="content-section mb-12">
+                <h3 class="text-3xl font-semibold mb-6 text-dark-blue text-center">Frequently Asked Questions (FAQs)</h3>
+
+                <div class="space-y-4" id="faq-accordion">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>When is the enrollment period?</span>
+                            <span class="faq-arrow">&#9660;</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Official enrollment dates will be announced on our school's website and social media channels. Please stay tuned for updates!</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Can I change my chosen strand after enrollment?</span>
+                            <span class="faq-arrow">&#9660;</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Strand changes are subject to availability and school policy. It's best to finalize your choice during the interview process. For special cases, please consult with the SHS coordinator.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Are there any entrance exams?</span>
+                            <span class="faq-arrow">&#9660;</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Currently, San Vicente National High School does not administer entrance exams for Senior High School enrollment. Admission is based on the submission of complete requirements and interview results.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Who can I contact for more questions?</span>
+                            <span class="faq-arrow">&#9660;</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>You can reach our enrollment office via email at <a href="mailto:info@yourschool.edu" class="text-blue-600 hover:underline">info@yourschool.edu</a> or call us at <a href="tel:+1234567890" class="text-blue-600 hover:underline">(123) 456-7890</a> during office hours. Our school is located in Panabo City, Davao Region.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="enroll-section text-center mb-12">
+                <h3 class="text-4xl font-bold enroll-heading mb-6">Ready to Join Our Family?</h3>
+                <p class="text-xl text-blue-700 mb-8">
+                    Don't miss the opportunity to shape your future with San Vicente National High School.
+                </p>
+                <a href="contact.html" class="cta-button text-2xl px-8 py-4">Contact Us for Enrollment</a>
+            </section>
+        </div>
+    </main>
+
+    <footer id="contact" class="footer-section text-white">
+        <div class="container text-center">
+            <p>&copy; 2025 SVNHS. All rights reserved.</p>
+            <p class="mt-2">Contact us: <a href="mailto:info@yourschool.edu" class="footer-link">info@yourschool.edu</a> | <a href="tel:+1234567890" class="footer-link">(123) 456-7890</a></p>
+            <p class="mt-1 text-sm">San Vicente National High School is located in Panabo City, Davao Region.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const faqAccordion = document.getElementById('faq-accordion');
+
+            if (faqAccordion) {
+                faqAccordion.addEventListener('click', (event) => {
+                    const question = event.target.closest('.faq-question');
+                    if (question) {
+                        const faqItem = question.parentElement;
+                        faqItem.classList.toggle('open');
+                    }
+                });
+
+                // Optional: Add keyboard navigation for accessibility
+                faqAccordion.querySelectorAll('.faq-question').forEach(question => {
+                    question.setAttribute('tabindex', '0'); // Make questions focusable
+                    question.setAttribute('role', 'button'); // Indicate they are interactive buttons
+                    question.setAttribute('aria-expanded', 'false'); // Initial state
+
+                    question.addEventListener('keydown', (event) => {
+                        if (event.key === 'Enter' || event.key === ' ') {
+                            event.preventDefault(); // Prevent scrolling on spacebar
+                            const faqItem = question.parentElement;
+                            faqItem.classList.toggle('open');
+                            const isExpanded = faqItem.classList.contains('open');
+                            question.setAttribute('aria-expanded', isExpanded);
+                        }
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>

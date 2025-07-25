@@ -1,0 +1,621 @@
+/* Universal Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Kumbh Sans', sans-serif;
+}
+
+/* Navbar Container */
+.navbar {
+    background: #131313;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+.navbar__container {
+    display: flex;
+    justify-content: space-between;
+    height: 80px;
+    z-index: 1;
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 50px;
+}
+
+/* Navbar Logo */
+#navbar__logo {
+    background-color: #ff8177;
+    background-image: linear-gradient(to top, #ff0844 0%, #ffb199 100%);
+    background-size: 100%;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 2rem;
+    border-radius: 4px;
+}
+
+.fa-gem {
+    margin-right: 0.5rem;
+}
+
+/* Navbar Menu */
+.navbar__menu {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    text-align: center;
+}
+
+.navbar__item {
+    height: 80px;
+}
+
+.navbar__links {
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    padding: 0 1rem;
+    height: 100%;
+    transition: all 0.3s ease;
+    border-radius: 4px;
+}
+
+.navbar__links:hover {
+    color: #f77062;
+}
+
+/* Navbar Button (for the dropdown container) */
+.navbar__btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 1rem;
+    height: 100%;
+}
+
+/* --- Dropdown Specific Styles --- */
+.dropdown {
+    position: relative;
+    display: inline-block;
+    height: 80px;
+    display: flex;
+    align-items: center;
+}
+
+.dropbtn {
+    background: #f77062;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 4px;
+    height: auto;
+    width: auto;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.dropbtn:hover, .dropbtn:focus {
+    background: #4837ff;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 280px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 100;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 15px;
+    border-radius: 8px;
+    color: #333;
+    flex-direction: column;
+    gap: 12px;
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* Animation for dropdown */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px) translateX(-50%); }
+    to { opacity: 1; transform: translateY(0) translateX(-50%); }
+}
+
+.dropdown-title {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.dropdown-content input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 1rem;
+}
+
+.dropdown-content button {
+    background: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    font-size: 1rem;
+    width: 100%;
+}
+
+.dropdown-content button:hover {
+    background: #0056b3;
+}
+
+.dropdown-content.show {
+    display: flex;
+}
+
+/* Custom Message Box for dropdown and form */
+.message-box {
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.message-box.show {
+    opacity: 1;
+}
+
+.message-box.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.message-box.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* --- Hero Section Styles --- */
+.hero__section {
+    background: linear-gradient(to right, #4837ff, #f77062);
+    padding: 100px 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+    min-height: 60vh;
+    border-radius: 8px;
+    margin: 20px;
+    overflow: hidden; /* Ensure content doesn't overflow during animation */
+    position: relative; /* For pseudo-element animation */
+}
+
+/* Added subtle background animation for "fun to watch" */
+.hero__section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at center, rgba(255,255,255,0.1) 0%, transparent 70%);
+    animation: rotateBackground 20s linear infinite;
+    opacity: 0.5;
+    z-index: 0;
+}
+
+@keyframes rotateBackground {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.hero__container {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative; /* Bring content above pseudo-element */
+    z-index: 1;
+}
+
+.hero__heading {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    line-height: 1.2;
+    animation: slideInFromLeft 1s ease-out; /* Added animation */
+}
+
+@keyframes slideInFromLeft {
+    from { opacity: 0; transform: translateX(-50px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+.hero__heading span {
+    background-image: linear-gradient(to right, #ffb199 0%, #ff0844 100%);
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+}
+
+.hero__description {
+    font-size: 1.5rem;
+    margin-bottom: 40px;
+    animation: fadeIn 1.5s ease-out; /* Added animation */
+}
+
+.main__btn {
+    background: #f77062;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    animation: popIn 1s ease-out 0.5s forwards; /* Added animation with delay */
+    opacity: 0; /* Start hidden for animation */
+}
+
+@keyframes popIn {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.main__btn a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.main__btn:hover {
+    background: #4837ff;
+    transform: translateY(-2px);
+}
+
+/* --- Enrollment Form Section Styles --- */
+.enrollment__section {
+    padding: 80px 50px;
+    background-color: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    border-radius: 8px;
+    margin: 20px;
+}
+
+.enrollment__container {
+    background: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    max-width: 700px;
+    width: 100%;
+    animation: slideInFromBottom 1s ease-out; /* Added animation */
+}
+
+@keyframes slideInFromBottom {
+    from { opacity: 0; transform: translateY(50px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.enrollment__heading {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.enrollment__form .form__group {
+    margin-bottom: 20px;
+}
+
+.enrollment__form label {
+    display: block;
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+.enrollment__form input[type="text"],
+.enrollment__form input[type="email"],
+.enrollment__form input[type="tel"],
+.enrollment__form select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.enrollment__form input:focus,
+.enrollment__form select:focus {
+    border-color: #4837ff;
+    box-shadow: 0 0 0 3px rgba(72, 55, 255, 0.2);
+    outline: none;
+}
+
+.submit__btn {
+    background: #f77062;
+    color: #fff;
+    padding: 15px 25px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    width: 100%;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.submit__btn:hover {
+    background: #4837ff;
+    transform: translateY(-2px);
+}
+
+/* --- Footer Section Styles --- */
+.footer__section {
+    background: #131313;
+    color: #fff;
+    padding: 40px 50px;
+    text-align: center;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    margin: 20px;
+    margin-top: 0;
+}
+
+.footer__container {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.social__icons {
+    display: flex;
+    gap: 20px;
+}
+
+.social__icon--link {
+    color: #fff;
+    font-size: 1.8rem;
+    transition: color 0.3s ease;
+}
+
+.social__icon--link:hover {
+    color: #f77062;
+}
+
+
+/* Mobile Responsive Styles */
+@media screen and (max-width: 960px) {
+    .navbar__container {
+        display: flex;
+        justify-content: space-between;
+        height: 80px;
+        z-index: 1;
+        width: 100%;
+        max-width: 1300px;
+        padding: 0;
+    }
+
+    .navbar__menu {
+        display: grid;
+        grid-template-columns: auto;
+        margin: 0;
+        width: 100%;
+        position: absolute;
+        top: -1000px;
+        opacity: 0;
+        transition: all 0.5s ease-in-out;
+        height: 50vh;
+        z-index: -1;
+        background: #131313;
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+    }
+
+    .navbar__menu.active {
+        top: 100%;
+        opacity: 1;
+        z-index: 99;
+        height: 50vh;
+        font-size: 1.6rem;
+    }
+
+    #navbar__logo {
+        padding-left: 25px;
+    }
+
+    .navbar__toggle .bar {
+        width: 25px;
+        height: 3px;
+        margin: 5px auto;
+        transition: all 0.3s ease-in-out;
+        background: #fff;
+        border-radius: 2px;
+    }
+
+    /* Animation for hamburger icon to 'X' */
+    .navbar__toggle.is-active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .navbar__toggle.is-active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .navbar__toggle.is-active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    .navbar__item {
+        width: 100%;
+    }
+
+    .navbar__links {
+        text-align: center;
+        padding: 2rem;
+        width: 100%;
+        display: table;
+    }
+
+    #mobile-menu {
+        position: absolute;
+        top: 20%;
+        right: 5%;
+        transform: translate(-5%, -20%);
+        cursor: pointer;
+    }
+
+    .navbar__btn {
+        padding-bottom: 2rem;
+        width: 100%;
+    }
+
+    /* Adjust dropdown behavior in mobile view */
+    .dropdown {
+        width: 100%;
+        justify-content: center;
+        height: auto;
+    }
+
+    .dropbtn {
+        width: 80%;
+        font-size: 1rem;
+    }
+
+    .dropdown-content {
+        position: static;
+        width: 80%;
+        margin: 0 auto;
+        box-shadow: none;
+        background-color: #222;
+        color: #fff;
+        border-radius: 8px;
+        animation: none;
+    }
+
+    .dropdown-content input[type="text"] {
+        background-color: #333;
+        border-color: #555;
+        color: #fff;
+        font-size: 0.9rem;
+    }
+
+    .dropdown-content button {
+        background: #f77062;
+        font-size: 0.9rem;
+    }
+
+    .dropdown-title {
+        color: #fff;
+        font-size: 1.3rem;
+    }
+
+    /* Hero Section Mobile Adjustments */
+    .hero__section {
+        padding: 60px 20px;
+        margin: 10px;
+    }
+
+    .hero__heading {
+        font-size: 2.5rem;
+    }
+
+    .hero__description {
+        font-size: 1.2rem;
+    }
+
+    .main__btn {
+        padding: 12px 25px;
+        font-size: 1rem;
+    }
+
+    /* Enrollment Form Section Mobile Adjustments */
+    .enrollment__section {
+        padding: 40px 20px;
+        margin: 10px;
+    }
+
+    .enrollment__container {
+        padding: 25px;
+    }
+
+    .enrollment__heading {
+        font-size: 2rem;
+        margin-bottom: 20px;
+    }
+
+    .enrollment__form label {
+        font-size: 1rem;
+    }
+
+    .enrollment__form input,
+    .enrollment__form select {
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+
+    .submit__btn {
+        padding: 12px 20px;
+        font-size: 1rem;
+    }
+
+    /* Footer Section Mobile Adjustments */
+    .footer__section {
+        padding: 30px 20px;
+        margin: 10px;
+        margin-top: 0;
+    }
+
+    .footer__container {
+        gap: 15px;
+    }
+
+    .social__icon--link {
+        font-size: 1.5rem;
+    }
+}

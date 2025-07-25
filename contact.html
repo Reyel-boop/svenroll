@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - San Vicente National High School</title>
+
+    <!-- Tailwind CSS CDN (already present in your main page) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome for icons (required by chatbot, added here for global access) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- Google Fonts (already present in your main page) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* Custom styles for smooth transitions and responsiveness (from your main page) */
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #333;
+            line-height: 1.6;
+            /* Enhanced Background: Dynamic Gradient with subtle animation */
+            background: linear-gradient(135deg, #e0f7fa, #c5e7ed, #a7e0f2, #8ceef7); /* Brighter, more vibrant blues */
+            background-size: 400% 400%;
+            animation: gradientBackground 18s ease infinite alternate; /* Slower, alternating animation */
+            min-height: 100vh; /* Ensure background covers full height */
+            display: flex;
+            flex-direction: column;
+        }
+
+        @keyframes gradientBackground {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        /* Header specific styles */
+        header {
+            background-color: rgba(255, 255, 255, 0.95); /* Slightly transparent white */
+            backdrop-filter: blur(8px); /* Frosted glass effect */
+            -webkit-backdrop-filter: blur(8px); /* For Safari */
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        header.scrolled {
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Main content section to push footer to bottom */
+        .main-content {
+            flex-grow: 1; /* Allows main content to take available space */
+            padding: 2.5rem 1rem; /* Add more vertical padding */
+        }
+
+        .contact-card {
+            background-color: #ffffff;
+            border-radius: 1.5rem;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12); /* Stronger, softer shadow */
+            padding: 3rem; /* Increased padding */
+            transition: transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1), box-shadow 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+            border: 1px solid #e2e8f0; /* Subtle border */
+        }
+
+        .contact-card:hover {
+            transform: translateY(-8px); /* More pronounced lift */
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-image: linear-gradient(to right, #4299e1, #63b3ed); /* Blue gradient */
+            color: white;
+            padding: 0.9rem 2.5rem; /* Larger padding */
+            border-radius: 9999px; /* Pill shape */
+            font-weight: 700; /* Bolder text */
+            text-decoration: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-image 0.3s ease;
+            box-shadow: 0 6px 15px rgba(66, 153, 225, 0.4); /* Stronger shadow matching gradient */
+            letter-spacing: 0.05em; /* Slight letter spacing */
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px); /* Slight lift */
+            box-shadow: 0 8px 20px rgba(66, 153, 225, 0.5); /* Enhanced shadow */
+            background-image: linear-gradient(to right, #63b3ed, #4299e1); /* Reverse gradient on hover */
+        }
+
+        /* Form specific styles */
+        .form-input {
+            width: 100%;
+            padding: 0.85rem 1.1rem; /* Slightly larger padding */
+            border: 1px solid #cbd5e0; /* Light gray border */
+            border-radius: 0.75rem; /* Rounded corners */
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            background-color: #f7fafc; /* Slightly off-white background for inputs */
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #4299e1; /* Blue border on focus */
+            box-shadow: 0 0 0 4px rgba(66, 153, 225, 0.3); /* More prominent blue shadow on focus */
+        }
+
+        .form-textarea {
+            min-height: 140px; /* Taller textarea */
+            resize: vertical; /* Allow vertical resizing */
+        }
+
+        /* Icon styling */
+        .icon-svg {
+            color: #4299e1; /* Blue for icons */
+            flex-shrink: 0; /* Prevent icon from shrinking */
+        }
+
+        /* Keyframe for fade-in-up animation */
+        @keyframes fade-in-up {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .animate-fade-in-up {
+            animation: fade-in-up 0.8s ease-out forwards;
+        }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-400 { animation-delay: 0.4s; }
+        .delay-500 { animation-delay: 0.5s; }
+
+        /* Chatbot specific styles (integrated from previous chatbot code) */
+        .chat-toggle-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #4f46e5; /* Indigo 600 */
+            color: white;
+            border-radius: 9999px; /* Fully rounded */
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            z-index: 1000; /* Ensure it's on top */
+            transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+        }
+        .chat-toggle-button:hover {
+            background-color: #4338ca; /* Indigo 700 */
+            transform: scale(1.05);
+        }
+        .chat-toggle-button:active {
+            transform: scale(0.95);
+        }
+
+        .chat-container {
+            position: fixed;
+            bottom: 90px; /* Above the toggle button */
+            right: 20px;
+            max-width: 350px; /* Slightly smaller width */
+            width: 90%; /* Responsive width for smaller screens */
+            height: 500px; /* Slightly smaller height */
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            z-index: 999; /* Below the toggle button but above content */
+            transform: translateY(100%); /* Start hidden below screen */
+            opacity: 0;
+            visibility: hidden;
+            transition: transform 0.4s ease-out, opacity 0.4s ease-out, visibility 0.4s ease-out;
+        }
+        .chat-container.open {
+            transform: translateY(0); /* Slide up into view */
+            opacity: 1;
+            visibility: visible;
+        }
+        .chat-header {
+            background-color: #4f46e5; /* Indigo 600 */
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            font-size: 1.25rem;
+            font-weight: bold;
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .chat-header .close-button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0 0.5rem;
+            transition: transform 0.1s ease-out;
+        }
+        .chat-header .close-button:hover {
+            transform: scale(1.1);
+        }
+        .chat-messages {
+            flex-grow: 1;
+            padding: 1rem;
+            overflow-y: auto;
+            background-color: #f9fafb; /* Lighter gray for messages area */
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        .message {
+            max-width: 80%;
+            padding: 0.75rem 1rem;
+            border-radius: 1rem;
+            word-wrap: break-word;
+            opacity: 0; /* Start hidden for animation */
+            transform: translateY(20px); /* Start below for slide-up */
+            transition: opacity 0.3s ease-out, transform 0.3s ease-out; /* Smooth transition */
+            display: flex;
+            align-items: flex-start; /* Align icon and text */
+            gap: 0.5rem; /* Space between icon and text */
+        }
+        .message.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .message .icon {
+            font-size: 1.2rem;
+            line-height: 1; /* Align icon vertically with text */
+            flex-shrink: 0; /* Prevent icon from shrinking */
+        }
+        .message.user {
+            align-self: flex-end;
+            background-color: #d1e7dd; /* Light green for user messages */
+            color: #155724; /* Dark green text */
+            border-bottom-right-radius: 0.25rem;
+        }
+        .message.bot {
+            align-self: flex-start;
+            background-color: #e0f2f7; /* Light blue for bot messages */
+            color: #0c5460; /* Dark blue text */
+            border-bottom-left-radius: 0.25rem;
+        }
+        .chat-input-area {
+            display: flex;
+            padding: 1rem;
+            border-top: 1px solid #e5e7eb; /* Light gray border */
+            background-color: #ffffff;
+        }
+        .chat-input {
+            flex-grow: 1;
+            padding: 0.75rem 1rem;
+            border: 1px solid #d1d5db;
+            border-radius: 0.5rem;
+            outline: none;
+            font-size: 1rem;
+        }
+        .chat-input:focus {
+            border-color: #4f46e5; /* Indigo 600 on focus */
+            box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.2);
+        }
+        .send-button {
+            background-color: #4f46e5; /* Indigo 600 */
+            color: white;
+            padding: 0.75rem 1.25rem;
+            border-radius: 0.5rem;
+            margin-left: 0.75rem;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out, transform 0.1s ease-out; /* Smooth transition */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+        .send-button:hover {
+            background-color: #4338ca; /* Indigo 700 on hover */
+            transform: scale(1.02); /* Slightly enlarge on hover */
+        }
+        .send-button:active {
+            transform: scale(0.98); /* Slightly shrink on click */
+        }
+        .loading-indicator {
+            display: flex;
+            justify-content: flex-start; /* Align with bot messages */
+            align-items: center;
+            padding: 1rem;
+            color: #6b7280;
+            font-style: italic;
+            gap: 0.5rem;
+            opacity: 0; /* Start hidden for animation */
+            transition: opacity 0.3s ease-out;
+        }
+        .loading-indicator.show {
+            opacity: 1;
+        }
+        .loading-indicator span {
+            display: inline-block;
+            animation: pulse 1.5s infinite ease-in-out;
+        }
+        .loading-indicator span:nth-child(2) { animation-delay: 0.2s; }
+        .loading-indicator span:nth-child(3) { animation-delay: 0.4s; }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.2); opacity: 0.5; }
+        }
+
+        /* Responsive adjustments for the fixed chatbot */
+        @media (max-width: 768px) { /* Adjusted breakpoint to match your main page media query */
+            .main-content {
+                padding: 1.5rem 1rem;
+            }
+            .contact-card {
+                padding: 2rem;
+            }
+            .contact-card h3 {
+                font-size: 1.75rem;
+            }
+            .cta-button {
+                padding: 0.75rem 2rem;
+            }
+
+            .chat-toggle-button {
+                bottom: 10px;
+                right: 10px;
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+            }
+            .chat-container {
+                bottom: 70px; /* Adjust position above smaller toggle */
+                right: 10px;
+                max-width: calc(100% - 20px); /* Full width minus margins */
+                height: calc(100vh - 80px); /* Full height minus toggle and top margin */
+                border-radius: 8px; /* Slightly less rounded on mobile */
+            }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="bg-white shadow-md py-4">
+        <div class="container flex justify-between items-center">
+            <h1 class="text-3x1 font-bold text-gray-800 font-poppins">
+                <a href="index.html" class="text-gray-800 hover:text-blue-500 transition duration-300">
+                    San Vicente National High School
+                </a>
+            </h1>
+            <nav>
+                <ul class="flex space-x-6">
+                  <li><a href="index.html" class="text-gray-600 hover:text-blue-500 transition duration-300">Home</a></li>
+                    <li><a href="index.html" class="text-gray-600 hover:text-blue-500 transition duration-300">Senior High School </a></li>
+                    <li><a href="enrollment.html" class="text-gray-600 hover:text-blue-500 transition duration-300 font-semibold">Enroll</a></li>
+                     <li><a href="enrollmentprocess.html" class="text-gray-600 hover:text-blue-500 transition duration-300">Enrollment Guide</a></li>
+                    <li><a href="facultymembers.html" class="text-gray-600 hover:text-blue-500 transition duration-300">Faculty</a></li>
+                    <li><a href="contact.html" class="text-gray-600 hover:text-blue-500 transition duration-300">Contact</a></li>
+                   </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container py-12">
+            <h2 class="text-4xl font-extrabold text-gray-800 text-center mb-12 animate-fade-in-up font-poppins">Get In Touch With Us</h2>
+            <p class="text-lg text-gray-700 text-center mb-10 max-w-3xl mx-auto animate-fade-in-up delay-200">
+                We're here to help! Whether you have questions about enrollment, our programs, or anything else, feel free to reach out. We look forward to hearing from you.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
+                <div class="contact-card animate-fade-in-up delay-400">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6 font-poppins">Our Contact Details</h3>
+                    <script src="https://cdn.tailwindcss.com"></script>
+<style>
+    /* Custom styles for the message box */
+    .message-box {
+        position: fixed;
+        bottom: 1.5rem; /* 24px */
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: rgba(30, 58, 138, 0.9); /* Darker blue with some transparency */
+        color: white;
+        padding: 0.75rem 1.5rem; /* 12px 24px */
+        border-radius: 0.5rem; /* 8px */
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+        font-family: 'Inter', sans-serif; /* Use Inter font */
+    }
+    .message-box.show {
+        opacity: 1;
+        visibility: visible;
+    }
+    /* Ensure icons don't shrink */
+    .icon-svg {
+        min-width: 1.75rem; /* h-7 w-7 */
+    }
+</style>
+
+<!-- Main container for contact information -->
+<div class="max-w-md mx-auto bg-white rounded-lg shadow-xl p-6 space-y-6 text-gray-700 font-inter">
+    <h2 class="text-3xl font-extrabold text-gray-900 mb-6 text-center">Contact Us</h2>
+
+    <!-- Address Section -->
+    <div class="flex items-start group relative p-3 rounded-lg hover:bg-gray-50 transition-colors duration-200">
+        <!-- SVG Icon for Address -->
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-blue-600 mr-3 icon-svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.828 0l-4.243-4.243m11.314 0A8.001 8.001 0 004.08 11.314m0 0L9.314 6.08a4.002 4.002 0 015.656 0L20 11.314m-8 0v.01M12 18v.01"></path>
+        </svg>
+        <div class="flex-grow">
+            <strong class="text-gray-800 text-lg">Address:</strong><br>
+            <span id="addressText" class="text-gray-700">Purok 2, San Vicente, Panabo City, Davao del Norte, Philippines</span>
+            <!-- Interactive buttons for Address (visible on hover) -->
+            <div class="mt-2 flex space-x-2 md:absolute md:top-1/2 md:-translate-y-1/2 md:right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <button onclick="copyToClipboard('addressText', 'Address copied to clipboard!')" class="px-3 py-1 text-sm bg-blue-100 text-blue-800 rounded-full hover:bg-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 shadow-sm">Copy</button>
+                <a href="https://www.google.com/maps/search/?api=1&query=Purok+2,+San+Vicente,+Panabo+City,+Davao+del+Norte,+Philippines" target="_blank" class="px-3 py-1 text-sm bg-green-100 text-green-800 rounded-full hover:bg-green-200 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 shadow-sm flex items-center">
+                    View Map
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Phone Section -->
+    <div class="flex items-center group relative p-3 rounded-lg hover:bg-gray-50 transition-colors duration-200">
+        <!-- SVG Icon for Phone -->
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-blue-600 mr-3 icon-svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+        </svg>
+        <strong class="text-gray-800 text-lg">Phone:</strong>
+        <a href="tel:+63848233275" id="phoneText" class="ml-2 text-blue-600 hover:underline text-gray-700">(084)-823-3275</a>
+        <!-- Interactive button for Phone (visible on hover) -->
+        <div class="mt-2 flex space-x-2 md:absolute md:top-1/2 md:-translate-y-1/2 md:right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <button onclick="copyToClipboard('phoneText', 'Phone number copied to clipboard!')" class="px-3 py-1 text-sm bg-blue-100 text-blue-800 rounded-full hover:bg-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 shadow-sm">Copy</button>
+        </div>
+    </div>
+
+    <!-- Email Section -->
+    <div class="flex items-center group relative p-3 rounded-lg hover:bg-gray-50 transition-colors duration-200">
+        <!-- SVG Icon for Email -->
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-blue-600 mr-3 icon-svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8m-18 4v7a2 2 0 002 2h14a2 2 0 002-2v-7m-18 0h18"></path>
+        </svg>
+        <strong class="text-gray-800 text-lg">Email:</strong>
+        <a href="mailto:sanvicente.panabo@deped.gov.ph" id="emailText" class="ml-2 text-blue-600 hover:underline text-gray-700">sanvicente.panabo@deped.gov.ph</a>
+        <!-- Interactive button for Email (visible on hover) -->
+        <div class="mt-2 flex space-x-2 md:absolute md:top-1/2 md:-translate-y-1/2 md:right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <button onclick="copyToClipboard('emailText', 'Email address copied to clipboard!')" class="px-3 py-1 text-sm bg-blue-100 text-blue-800 rounded-full hover:bg-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 shadow-sm">Copy</button>
+        </div>
+    </div>
+
+    <!-- Office Hours Section -->
+    <div class="flex items-center p-3 rounded-lg">
+        <!-- SVG Icon for Office Hours -->
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-blue-600 mr-3 icon-svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+        </svg>
+        <strong class="text-gray-800 text-lg">Office Hours:</strong>
+        <span class="ml-2 text-gray-700">Mon - Fri, 7:30 AM - 4:30 PM</span>
+    </div>
+</div>
+
+<!-- Custom Message Box Element -->
+<div id="messageBox" class="message-box"></div>
+
+<script>
+    // Function to show a custom message box
+    function showMessageBox(message) {
+        const messageBox = document.getElementById('messageBox');
+        messageBox.textContent = message;
+        messageBox.classList.add('show');
+
+        // Hide the message box after 3 seconds
+        setTimeout(() => {
+            messageBox.classList.remove('show');
+        }, 3000);
+    }
+
+    // Function to copy text to clipboard
+    function copyToClipboard(elementId, message) {
+        const element = document.getElementById(elementId);
+        let textToCopy = '';
+
+        // Determine the text to copy based on element type
+        if (element.tagName === 'A') {
+            // For anchor tags, prefer innerText but fallback to href for tel/mailto
+            textToCopy = element.innerText.trim();
+            if (!textToCopy && element.href) {
+                // Remove 'tel:' or 'mailto:' prefix for cleaner copy
+                textToCopy = element.href.replace(/^(tel:|mailto:)/, '');
+            }
+        } else {
+            // For other elements (like span), get innerText
+            textToCopy = element.innerText.trim();
+        }
+
+        // Use the Clipboard API to write text
+        navigator.clipboard.writeText(textToCopy).then(() => {
+            showMessageBox(message); // Show custom success message
+        }).catch(err => {
+            console.error('Failed to copy text: ', err);
+            showMessageBox('Failed to copy. Please try again or copy manually.'); // Show custom error message
+        });
+    }
+</script>
+
+                    <div class="mt-10">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4 font-poppins">Find Us on the Map</h3>
+                        <div class="w-full h-80 bg-gray-200 rounded-lg overflow-hidden shadow-inner border border-gray-200">
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3946.905471448839!2d125.6653181745486!3d7.265740414995476!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x32f913d291b8d26f%3A0x6d6e2e04e907a976!2sSan%20Vicente%20National%20High%20School!5e0!3m2!1sen!2sph!4v1721864314175!5m2!1sen!2sph"
+                                width="100%"
+                                height="100%"
+                                style="border:0;"
+                                allowfullscreen=""
+                                loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-card animate-fade-in-up delay-500">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6 font-poppins">Send Us a Message</h3>
+                    <form action="#" method="POST" class="text-left">
+                        <div class="mb-5">
+                            <label for="name" class="block text-gray-700 text-sm font-semibold mb-2">Your Name</label>
+                            <input type="text" id="name" name="name" class="form-input" placeholder="Enter your full name" required>
+                        </div>
+                        <div class="mb-5">
+                            <label for="email" class="block text-gray-700 text-sm font-semibold mb-2">Your Email</label>
+                            <input type="email" id="email" name="email" class="form-input" placeholder="Enter your email address" required>
+                        </div>
+                        <div class="mb-5">
+                            <label for="subject" class="block text-gray-700 text-sm font-semibold mb-2">Subject</label>
+                            <input type="text" id="subject" name="subject" class="form-input" placeholder="Subject of your inquiry" required>
+                        </div>
+                        <div class="mb-6">
+                            <label for="message" class="block text-gray-700 text-sm font-semibold mb-2">Your Message</label>
+                            <textarea id="message" name="message" class="form-input form-textarea" placeholder="Type your detailed message here..." required></textarea>
+                        </div>
+                        <button type="submit" class="cta-button w-full text-lg">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer id="footer-contact" class="bg-gray-800 text-white py-8 rounded-t-3xl">
+        <div class="container text-center">
+            <p class="text-sm">&copy; 2025 San Vicente National High School. All rights reserved.</p>
+            <p class="mt-2 text-sm">Contact us: <a href="mailto:sanvicente.panabo@deped.gov.ph" class="text-blue-400 hover:underline">sanvicente.panabo@deped.gov.ph</a> | (084)-823-3275</p>
+        </div>
+    </footer>
+
+    <!-- Chatbot Toggle Button -->
+    <div id="chat-toggle-button" class="chat-toggle-button">
+        <i class="fas fa-comments"></i> <!-- Chat icon -->
+    </div>
+
+    <!-- Chatbot Container -->
+    <div class="chat-container" id="chat-container">
+        <div class="chat-header">
+            <span>SAN VICENTE NHS Chat Support</span>
+            <button id="close-chat-button" class="close-button">&times;</button> <!-- Close button -->
+        </div>
+        <div class="chat-messages" id="chat-messages">
+            <!-- Initial bot message -->
+            <div class="message bot show">
+                <span class="icon">🤖</span>
+                <span>Hello! I'm the SAN VICENTE NHS Chat Support. How can I help you today?
+                You can ask me about enrollment, school programs, or general inquiries.</span>
+            </div>
+        </div>
+        <div class="chat-input-area">
+            <input type="text" id="chat-input" class="chat-input" placeholder="Type your message...">
+            <button id="send-button" class="send-button">
+                <i class="fas fa-paper-plane"></i> <!-- Paper plane icon -->
+            </button>
+        </div>
+    </div>
+
+    <script type="module">
+        // Script for header scroll effect (from your main page)
+        document.addEventListener('DOMContentLoaded', () => {
+            const header = document.querySelector('header');
+
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+        });
+
+        // Chatbot specific JavaScript (integrated from previous chatbot code)
+        const chatInput = document.getElementById('chat-input');
+        const sendButton = document.getElementById('send-button');
+        const chatMessages = document.getElementById('chat-messages');
+        const chatContainer = document.getElementById('chat-container');
+        const chatToggleButton = document.getElementById('chat-toggle-button');
+        const closeChatButton = document.getElementById('close-chat-button');
+
+        // Simple FAQ knowledge base
+        const faqs = [
+            { question: "enrollment", answer: "Enrollment for the upcoming school year usually begins in May. Please check our official website or Facebook page for the exact dates and requirements." },
+            { question: "requirements", answer: "General requirements for enrollment include: a copy of your birth certificate, latest report card, good moral character certificate, and a 2x2 ID picture. Specific requirements may vary by grade level." },
+            { question: "programs", answer: "SAN VICENTE NATIONAL HIGH SCHOOL offers various academic programs including Junior High School (Grades 7-10) and Senior High School (Grades 11-12) with different tracks like Academic (STEM, ABM, HUMSS, GAS) and TVL. We also have various co-curricular activities and clubs." },
+            { question: "contact", answer: "You can contact SAN VICENTE NATIONAL HIGH SCHOOL through our official landline number (082) 123-4567 or email us at info@sanvicentenhs.edu.ph. Our office hours are Monday to Friday, 8:00 AM to 5:00 PM." },
+            { question: "location", answer: "SAN VICENTE NATIONAL HIGH SCHOOL is located at Purok 5, Barangay San Vicente, Davao City. You can find us easily via Google Maps." },
+            { question: "tuition", answer: "As a public national high school, SAN VICENTE NATIONAL HIGH SCHOOL does not charge tuition fees for basic education. However, there might be minimal miscellaneous fees for certain activities or materials." },
+            { question: "schedule", answer: "Class schedules vary by grade level and subject. Detailed schedules are usually released during the enrollment period or the first week of classes." },
+            { question: "principal", answer: "The current principal of SAN VICENTE NATIONAL HIGH SCHOOL is Mr./Ms. [Principal's Name]. For specific inquiries, you may visit the school office." },
+            { question: "uniform", answer: "Students are required to wear the prescribed school uniform. Details about the uniform can be obtained from the school's administrative office or during orientation." },
+            { question: "holidays", answer: "School holidays follow the national and local government declarations. Announcements are made through school bulletins and official communication channels." }
+        ];
+
+        // Function to display messages in the chat window
+        function displayMessage(message, type) {
+            const messageElement = document.createElement('div');
+            messageElement.classList.add('message', type);
+
+            const iconSpan = document.createElement('span');
+            iconSpan.classList.add('icon');
+            iconSpan.textContent = type === 'user' ? '👤' : '🤖'; // User or Bot emoji
+
+            const textSpan = document.createElement('span');
+            textSpan.textContent = message;
+
+            messageElement.appendChild(iconSpan);
+            messageElement.appendChild(textSpan);
+
+            chatMessages.appendChild(messageElement);
+
+            // Trigger animation after adding to DOM
+            setTimeout(() => {
+                messageElement.classList.add('show');
+            }, 10); // Small delay to ensure CSS transition applies
+
+            // Scroll to the bottom of the chat
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // Function to show a loading indicator
+        function showLoading() {
+            const loadingDiv = document.createElement('div');
+            loadingDiv.id = 'loading-indicator';
+            loadingDiv.classList.add('loading-indicator');
+            loadingDiv.innerHTML = '<span class="icon">💬</span><span>Typing</span><span>.</span><span>.</span><span>.</span>';
+            chatMessages.appendChild(loadingDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+            // Trigger animation
+            setTimeout(() => {
+                loadingDiv.classList.add('show');
+            }, 10);
+        }
+
+        // Function to hide the loading indicator
+        function hideLoading() {
+            const loadingDiv = document.getElementById('loading-indicator');
+            if (loadingDiv) {
+                loadingDiv.classList.remove('show'); // Fade out
+                setTimeout(() => {
+                    loadingDiv.remove();
+                }, 300); // Remove after transition
+            }
+        }
+
+        // Function to handle sending messages
+        async function sendMessage() {
+            const userMessage = chatInput.value.trim();
+            if (userMessage === '') return; // Don't send empty messages
+
+            displayMessage(userMessage, 'user');
+            chatInput.value = ''; // Clear input field
+
+            showLoading(); // Show loading indicator
+
+            // Check if user message matches any FAQ
+            const lowerCaseMessage = userMessage.toLowerCase();
+            let botResponse = "I'm sorry, I don't have a direct answer for that in my FAQs. Let me try to find more information for you.";
+            let faqFound = false;
+
+            for (const faq of faqs) {
+                if (lowerCaseMessage.includes(faq.question)) {
+                    botResponse = faq.answer;
+                    faqFound = true;
+                    break;
+                }
+            }
+
+            if (faqFound) {
+                hideLoading();
+                displayMessage(botResponse, 'bot');
+            } else {
+                // If no FAQ found, use the Gemini API
+                try {
+                    let chatHistory = [];
+                    chatHistory.push({ role: "user", parts: [{ text: userMessage }] });
+
+                    const payload = { contents: chatHistory };
+                    // The API key will be automatically provided by the Canvas environment if left empty
+                    const apiKey = "";
+                    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    const result = await response.json();
+
+                    if (result.candidates && result.candidates.length > 0 &&
+                        result.candidates[0].content && result.candidates[0].content.parts &&
+                        result.candidates[0].content.parts.length > 0) {
+                        botResponse = result.candidates[0].content.parts[0].text;
+                    } else {
+                        botResponse = "I apologize, I couldn't generate a response at this moment. Please try again later.";
+                    }
+                } catch (error) {
+                    console.error('Error calling Gemini API:', error);
+                    botResponse = "There was an error connecting to the AI. Please try again later.";
+                } finally {
+                    hideLoading(); // Hide loading indicator regardless of success or failure
+                    displayMessage(botResponse, 'bot');
+                }
+            }
+        }
+
+        // Toggle chat window visibility
+        chatToggleButton.addEventListener('click', () => {
+            chatContainer.classList.toggle('open');
+        });
+
+        closeChatButton.addEventListener('click', () => {
+            chatContainer.classList.remove('open');
+        });
+
+        // Event listeners for sending messages
+        sendButton.addEventListener('click', sendMessage);
+        chatInput.addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        });
+    </script>
+</body>
+</html>

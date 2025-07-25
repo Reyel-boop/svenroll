@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>San Vicente NHS - Empowering Futures</title>
+    <meta name="description" content="Discover the Senior High School strands at San Vicente National High School and empower your future.">
+    <meta name="keywords" content="SVNHS, Senior High School, strands, enrollment, education, Panabo City">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Poppins for headings, Inter for body text -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons (optional, but good for visual flair) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+
+    
+
+    
+    <style>
+        /* Custom CSS for vibrant backgrounds, gradients, and animations */
+        :root {
+            --primary-color: #6366f1; /* Indigo 500 */
+            --secondary-color: #8b5cf6; /* Violet 500 */
+            --accent-color: #ec4899; /* Pink 500 */
+            --text-light: #f8fafc; /* Slate 50 */
+            --text-dark: #1e293b; /* Slate 800 */
+            --card-bg: #ffffff;
+            --gradient-start: #4f46e5; /* Indigo 600 */
+            --gradient-end: #a855f7; /* Purple 500 */
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            background-color: #f1f5f9; /* Light slate background */
+            line-height: 1.6;
+        }
+
+        /* Hero Section Styling */
+        .hero-section {
+            background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+            min-height: 80vh; /* Make it tall enough */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding: 4rem 1rem; /* Responsive padding */
+        }
+
+        /* Animated background shapes for the hero section */
+        .hero-section::before,
+        .hero-section::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.2;
+            filter: blur(80px); /* Soft blur */
+            z-index: 0;
+        }
+
+        .hero-section::before {
+            background: var(--accent-color);
+            width: 300px;
+            height: 300px;
+            top: -50px;
+            left: -50px;
+            animation: floatShape 15s infinite ease-in-out alternate;
+        }
+
+        .hero-section::after {
+            background: var(--secondary-color);
+            width: 400px;
+            height: 400px;
+            bottom: -100px;
+            right: -100px;
+            animation: floatShape 20s infinite ease-in-out alternate-reverse;
+        }
+
+        @keyframes floatShape {
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(20px, 30px) scale(1.05); }
+            100% { transform: translate(0, 0) scale(1); }
+        }
+
+        .hero-section h2 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 800; /* Extra bold */
+            font-size: clamp(2.5rem, 6vw, 4.5rem); /* Responsive font size */
+            line-height: 1.1;
+            text-shadow: 0 4px 8px rgba(0,0,0,0.3); /* Stronger shadow */
+        }
+
+        .hero-section p {
+            font-size: clamp(1rem, 2.5vw, 1.35rem); /* Responsive font size */
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #f97316, #f59e0b); /* Orange to Amber gradient */
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 9999px; /* Pill shape */
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            box-shadow: 0 8px 15px rgba(249, 115, 22, 0.4); /* Orange shadow */
+            transition: all 0.3s ease-in-out;
+            border: none;
+            text-decoration: none; /* Remove underline */
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 12px 20px rgba(249, 115, 22, 0.6);
+            background: linear-gradient(45deg, #f59e0b, #f97316); /* Reverse gradient on hover */
+        }
+
+        /* General Section Styling */
+        .section-container {
+            padding: 4rem 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            color: var(--text-dark);
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 6px;
+            background: var(--primary-color);
+            border-radius: 3px;
+            margin: 1rem auto 0;
+        }
+
+        /* Card Styling */
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 1.5rem; /* More rounded */
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            padding: 2.5rem;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #e2e8f0; /* Light border */
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .card-title {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 1.75rem;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .card-description {
+            color: #475569; /* Slate 700 */
+            font-size: 1rem;
+        }
+
+        /* Strand Section Specifics */
+        .strand-card {
+            background: linear-gradient(145deg, #e0f2fe, #bfdbfe); /* Light blue gradient */
+            border: none;
+        }
+        .strand-card:hover {
+            background: linear-gradient(145deg, #bfdbfe, #93c5fd); /* Slightly darker on hover */
+        }
+
+        /* Call to Action Section */
+        .cta-section {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: var(--text-light);
+            padding: 5rem 1rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+        .cta-section h3 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: 2rem;
+            text-shadow: 0 3px 6px rgba(0,0,0,0.2);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--text-dark); /* Dark background */
+            color: var(--text-light);
+            padding: 2.5rem 1rem;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        /* Animations for content reveal */
+        .animate-fade-in-up {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s forwards ease-out;
+        }
+
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+        .delay-400 { animation-delay: 0.4s; }
+        .delay-500 { animation-delay: 0.5s; }
+        .delay-600 { animation-delay: 0.6s; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navigation (Optional, but good for a full page) -->
+    <header class="w-full bg-white bg-opacity-90 shadow-md py-4 px-6 fixed top-0 left-0 z-50 backdrop-blur-sm">
+        <nav class="container mx-auto flex justify-between items-center">
+            <div class="text-2xl font-bold text-indigo-700 font-poppins">SVNHS</div>
+            <ul class="flex space-x-6">
+                    <li><a href="#home" class="text-gray-600 hover:text-blue-500 transition duration-300">Home</a></li>
+                    <li><a href="#strands" class="text-gray-600 hover:text-blue-500 transition duration-300">Senior High School </a></li>
+                    <li><a href="enrollment.html" class="text-gray-600 hover:text-blue-500 transition duration-300 font-semibold">Enroll</a></li>
+                     <li><a href="enrollmentprocess.html" class="text-gray-600 hover:text-blue-500 transition duration-300">Enrollment Guide</a></li>
+                    <li><a href="facultymembers.html" class="text-gray-600 hover:text-blue-500 transition duration-300">Faculty</a></li>
+                    <li><a href="contact.html" class="text-gray-600 hover:text-blue-500 transition duration-300">Contact</a></li>
+                   
+                </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section text-white text-center">
+        <div class="container relative z-10 mx-auto px-4">
+            <h2 class="font-extrabold mb-4 animate-fade-in-up">Empowering Futures, One Strand at a Time!</h2>
+            <p class="mb-8 opacity-90 animate-fade-in-up delay-200">
+                Discover the Senior High School strand that ignites your passion and propels you towards a successful career.
+            </p>
+            <a href="#strands" class="cta-button animate-fade-in-up delay-400">Explore Our Academic Paths</a>
+        </div>
+    </section>
+
+    <!-- Strands Section -->
+    <section id="strands" class="section-container">
+        <h2 class="section-title animate-fade-in-up delay-500">Our Senior High School Strands</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          
+            <!-- GAS Strand Card -->
+            <div class="card strand-card animate-fade-in-up delay-900">
+                <i class="fas fa-lightbulb card-icon"></i>
+                <h3 class="card-title">GAS</h3>
+                <p class="card-description">General Academic Strand. A flexible option for students still exploring their career paths.</p>
+            </div>
+            <!-- TVL Strand Card (Example) -->
+            <div class="card strand-card animate-fade-in-up delay-1000">
+                <i class="fas fa-tools card-icon"></i>
+                <h3 class="card-title">TVL</h3>
+                <p class="card-description">Technical-Vocational-Livelihood. Hands-on training for various technical skills and immediate employment.</p>
+           <li> Information and Communication Technology</li>
+           <li> Home Economics</li>
+           <li> Automotive</li>
+           
+            </div>
+
+            <div class="card strand-card animate-fade-in-up delay-1000">
+                <i class="fas fa-book card-icon"></i>
+                <h3 class="card-title">ALS</h3>
+                <p class="card-description">ALS (Alternative Learning System) is a parallel learning system in the Philippines that provides a practical option to the existing formal education.</p>
+        
+           
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section id="why-choose-us" class="section-container bg-white rounded-3xl shadow-xl mt-12">
+        <h2 class="section-title animate-fade-in-up delay-1100">Why Choose San Vicente NHS?</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-center">
+            <div class="card animate-fade-in-up delay-1200">
+                <i class="fas fa-chalkboard-teacher card-icon text-green-500"></i>
+                <h3 class="card-title">Expert Educators</h3>
+                <p class="card-description">Learn from dedicated and experienced teachers committed to your success.</p>
+            </div>
+            <div class="card animate-fade-in-up delay-1300">
+                <i class="fas fa-hands-helping card-icon text-purple-500"></i>
+                <h3 class="card-title">Supportive Community</h3>
+                <p class="card-description">Join a nurturing environment that fosters growth, collaboration, and camaraderie.</p>
+            </div>
+            <div class="card animate-fade-in-up delay-1400">
+                <i class="fas fa-award card-icon text-yellow-500"></i>
+                <h3 class="card-title">Quality Education</h3>
+                <p class="card-description">Receive a comprehensive curriculum designed to prepare you for college and career.</p>
+            </div>
+            <div class="card animate-fade-in-up delay-1500">
+                <i class="fas fa-laptop-code card-icon text-blue-500"></i>
+                <h3 class="card-title">Modern Facilities</h3>
+                <p class="card-description">Access state-of-the-art facilities that enhance your learning experience.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action: Enroll Now -->
+    <section id="enroll" class="cta-section">
+        <div class="container mx-auto px-4">
+            <h3 class="animate-fade-in-up delay-1600">Ready to Shape Your Future?</h3>
+            <p class="text-xl mb-8 opacity-90 animate-fade-in-up delay-1700">
+                Join the San Vicente National High School family today!
+            </p>
+            <a href="enrollment.html" class="cta-button animate-fade-in-up delay-1800">Start Your Enrollment</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container mx-auto px-4">
+            <p>&copy; 2025 San Vicente National High School. All rights reserved.</p>
+            <p class="mt-2">Panabo City, Davao Region, Philippines</p>
+        </div>
+    </footer>
+
+</body>
+</html>

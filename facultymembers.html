@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Faculty - SVNHS Senior High School</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Custom styles for smooth transitions and responsiveness */
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #333;
+            line-height: 1.6;
+            /* Vibrant Gradient Background with subtle animation */
+            background: linear-gradient(135deg, #e0f7fa, #c5e7ed, #a7e0f2, #8ceef7);
+            background-size: 400% 400%;
+            animation: gradientBackground 18s ease infinite alternate; /* Slower, alternating animation */
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        @keyframes gradientBackground {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        /* Header specific styles */
+        header {
+            background-color: rgba(255, 255, 255, 0.95); /* Slightly transparent white */
+            backdrop-filter: blur(8px); /* Frosted glass effect */
+            -webkit-backdrop-filter: blur(8px); /* For Safari */
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        header.scrolled {
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Main content section to push footer to bottom */
+        .main-content {
+            flex-grow: 1;
+            padding: 2.5rem 1rem;
+        }
+
+        .faculty-card {
+            background-color: #ffffff;
+            border-radius: 1.5rem;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); /* Softer, more prominent shadow */
+            padding: 2rem; /* Increased padding */
+            text-align: center;
+            transition: transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1), box-shadow 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+            border: 1px solid #e2e8f0; /* Subtle border */
+        }
+
+        .faculty-card:hover {
+            transform: translateY(-8px); /* More pronounced lift */
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.18); /* Enhanced shadow */
+        }
+
+        .faculty-image {
+            width: 140px; /* Slightly larger images */
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 1.25rem auto; /* Center image and add bottom margin */
+            border: 5px solid #4299e1; /* Thicker blue border */
+            transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 0 0 0px rgba(66, 153, 225, 0); /* Initial shadow for glow effect */
+        }
+
+        .faculty-card:hover .faculty-image {
+            border-color: #63b3ed; /* Lighter blue on hover */
+            transform: scale(1.03); /* Slight zoom effect */
+            box-shadow: 0 0 0 8px rgba(66, 153, 225, 0.3); /* Pulsing glow effect */
+        }
+        
+        /* Keyframe for fade-in-up animation */
+        @keyframes fade-in-up {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .animate-fade-in-up {
+            animation: fade-in-up 0.8s ease-out forwards;
+        }
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+        .delay-400 { animation-delay: 0.4s; }
+        /* ... you can add more delays as needed based on the number of cards */
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .main-content {
+                padding: 1.5rem 1rem;
+            }
+            .faculty-card {
+                padding: 1.5rem;
+            }
+            .faculty-image {
+                width: 100px;
+                height: 100px;
+            }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="bg-white shadow-md py-4">
+        <div class="container flex justify-between items-center">
+            <h1 class="text-3x1 font-bold text-gray-800 font-poppins">
+                <a href="index.html" class="text-gray-800 hover:text-blue-500 transition duration-300">
+                    San Vicente National High School
+                </a>
+            </h1>
+            <nav>
+                <ul class="flex space-x-6">
+                   <li><a href="#home" class="text-gray-600 hover:text-blue-500 transition duration-300">Home</a></li>
+                    <li><a href="#strands" class="text-gray-600 hover:text-blue-500 transition duration-300">Senior High School </a></li>
+                    <li><a href="enrollment.html" class="text-gray-600 hover:text-blue-500 transition duration-300 font-semibold">Enroll</a></li>
+                     <li><a href="enrollmentprocess.html" class="text-gray-600 hover:text-blue-500 transition duration-300">Enrollment Guide</a></li>
+                    <li><a href="facultymembers.html" class="text-gray-600 hover:text-blue-500 transition duration-300">Faculty</a></li>
+                    <li><a href="contact.html" class="text-gray-600 hover:text-blue-500 transition duration-300">Contact</a></li> </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container py-12">
+            <h2 class="text-4xl font-extrabold text-gray-800 text-center mb-12 animate-fade-in-up font-poppins">Meet Our Dedicated Faculty</h2>
+            <p class="text-lg text-gray-700 text-center mb-10 max-w-3xl mx-auto animate-fade-in-up delay-200">
+                Our passionate and experienced educators are committed to nurturing the potential in every student. Get to know the individuals who make our school a vibrant place of learning and growth.
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                <div class="faculty-card animate-fade-in-up delay-300">
+                    <img src="images/Behnjo S. Martin.JPG" alt="Principal" class="faculty-image">
+                    <h3 class="text-xl font-bold text-gray-800 mb-1 font-poppins">Mr. Behnjo S. Martin</h3>
+                    <p class="text-blue-600 font-semibold mb-4">Principal</p>
+                    <p class="text-gray-600 text-sm">Leading our school with vision and dedication, fostering a supportive learning environment.</p>
+                </div>
+
+                <div class="faculty-card animate-fade-in-up delay-400">
+                    <img src="images/Michael S. Rubino.JPG" alt="Assistant Principal" class="faculty-image">
+                    <h3 class="text-xl font-bold text-gray-800 mb-1 font-poppins">Mr. Michael S. Rubino</h3>
+                    <p class="text-blue-500 font-semibold mb-4">Assistant Principal</p>
+                    <p class="text-gray-600 text-sm">Supporting our students and staff every day, ensuring smooth operations and academic success.</p>
+                </div>
+
+                <div class="faculty-card animate-fade-in-up delay-500">
+                    <img src="images/Alma B. Picot.jpg" alt="Faculty Member 1" class="faculty-image">
+                    <h3 class="text-xl font-bold text-gray-800 mb-1">Ms. Alma B. Picot</h3>
+                    <p class="text-gray-500 mb-4">SHS Academic Head</p>
+                    <p class="text-gray-600 text-sm">English Teacher, dedicated to honing communication skills.</p>
+                </div>
+                <div class="faculty-card animate-fade-in-up delay-600">
+                    <img src="images/Maricel M. Bacalso.jpg" alt="Faculty Member 2" class="faculty-image">
+                    <h3 class="text-xl font-bold text-gray-800 mb-1">Ms. Maricel Bacalso</h3>
+                    <p class="text-gray-500 mb-4">Grade 11 Level Head</p>
+                    <p class="text-gray-600 text-sm">HE Teacher, inspiring practical life skills and creativity.</p>
+                </div>
+                <div class="faculty-card animate-fade-in-up delay-700">
+                    <img src="images/Lovelyn T. Sacurin.jpg" alt="Faculty Member 3" class="faculty-image">
+                    <h3 class="text-xl font-bold text-gray-800 mb-1">Ms. Lovelyn T. Sacurin</h3>
+                    <p class="text-gray-500 mb-4">Grade 12 Level Head</p>
+                    <p class="text-gray-600 text-sm">Filipino Teacher, fostering cultural appreciation and linguistic proficiency.</p>
+                </div>
+                <div class="faculty-card animate-fade-in-up delay-800">
+                    <img src="images/ruel.jpg" alt="Faculty Member 4" class="faculty-image">
+                    <h3 class="text-xl font-bold text-gray-800 mb-1">Mr. Ruel Montefolka</h3>
+                    <p class="text-gray-500 mb-4">SHS Focal Person</p>
+                    <p class="text-gray-600 text-sm">Automotive Teacher, guiding students in technical skills for future careers.</p>
+                </div>
+                <div class="faculty-card animate-fade-in-up delay-900">
+                    <img src="images/yel.jpeg" alt="Faculty Member 5" class="faculty-image">
+                    <h3 class="text-xl font-bold text-gray-800 mb-1">Mr. Jhon Reyel E. Jimenez</h3>
+                    <p class="text-gray-500 mb-4">Grade 11 Teacher</p>
+                    <p class="text-gray-600 text-sm">ICT Teacher, empowering students with digital literacy and tech skills.</p>
+                </div>
+               
+                 <div class="faculty-card animate-fade-in-up delay-1100">
+                    <img src="images/nick.JPG" alt="Faculty Member 7" class="faculty-image">
+                    <h3 class="text-xl font-bold text-gray-800 mb-1">Mr. Nickbert Alutaya</h3>
+                    <p class="text-gray-500 mb-4">Grade 12 Teacher</p>
+                    <p class="text-gray-600 text-sm">Automotive Instructor, preparing students for skilled trades.</p>
+                </div>
+                <div class="faculty-card animate-fade-in-up delay-1200">
+                    <img src="images/tim.jpeg" alt="Faculty Member 8" class="faculty-image">
+                    <h3 class="text-xl font-bold text-gray-800 mb-1">Mr. Tim Khemmer Suarez</h3>
+                    <p class="text-gray-500 mb-4">Grade 11 Teacher</p>
+                    <p class="text-gray-600 text-sm">English Teacher, fostering strong linguistic foundations.</p>
+                </div>
+                <div class="faculty-card animate-fade-in-up delay-1300">
+                    <img src="images/karen.jpeg" alt="Faculty Member 9" class="faculty-image">
+                    <h3 class="text-xl font-bold text-gray-800 mb-1">Ms. Karen D. Demetillo</h3>
+                    <p class="text-gray-500 mb-4">Grade 11 Teacher</p>
+                    <p class="text-gray-600 text-sm">Home Economics Teacher, developing essential domestic skills.</p>
+                </div>
+                <div class="faculty-card animate-fade-in-up delay-1400">
+                    <img src="images/aubrey.jpeg" alt="Faculty Member 10" class="faculty-image">
+                    <h3 class="text-xl font-bold text-gray-800 mb-1">Ms. Aubrey Anne Jalique</h3>
+                    <p class="text-gray-500 mb-4">Grade 11 Teacher</p>
+                    <p class="text-gray-600 text-sm">English Teacher, cultivating critical reading and writing skills.</p>
+                </div>
+                <div class="faculty-card animate-fade-in-up delay-1500">
+                    <img src="images/estomago.jpg" alt="Faculty Member 11" class="faculty-image">
+                    <h3 class="text-xl font-bold text-gray-800 mb-1">Ms. Michelle Estomago</h3>
+                    <p class="text-gray-500 mb-4">Grade 12 Teacher</p>
+                    <p class="text-gray-600 text-sm">Filipino Teacher, promoting national language proficiency.</p>
+                </div>
+                <div class="faculty-card animate-fade-in-up delay-1600">
+                    <img src="images/gabihan.jpeg" alt="Faculty Member 12" class="faculty-image">
+                    <h3 class="text-xl font-bold text-gray-800 mb-1">Ms. Marie Kris Gabihan</h3>
+                    <p class="text-gray-500 mb-4">Grade 12 Teacher</p>
+                    <p class="text-gray-600 text-sm">Math Teacher, simplifying complex concepts for all students.</p>
+                </div>
+                <div class="faculty-card animate-fade-in-up delay-1700">
+                    <img src="images/julie.jpg" alt="Faculty Member 13" class="faculty-image">
+                    <h3 class="text-xl font-bold text-gray-800 mb-1">Mr. Julie Culanag</h3>
+                    <p class="text-gray-500 mb-4">Grade 12 Teacher</p>
+                    <p class="text-600 text-sm">Science Teacher, fostering scientific inquiry and discovery.</p>
+                </div>
+                <div class="faculty-card animate-fade-in-up delay-1800">
+                    <img src="images/cot.jpg" alt="Faculty Member 14" class="faculty-image">
+                    <h3 class="text-xl font-bold text-gray-800 mb-1">Ms. Florene Mae Escote</h3>
+                    <p class="text-gray-500 mb-4">Grade 12 Teacher</p>
+                    <p class="text-gray-600 text-sm">ICT Teacher, equipping students with essential tech skills.</p>
+                </div>
+                <div class="faculty-card animate-fade-in-up delay-1900">
+                    <img src="images/jecel.jpg" alt="Faculty Member 15" class="faculty-image">
+                    <h3 class="text-xl font-bold text-gray-800 mb-1">Ms. Jecel Baguhin</h3>
+                    <p class="text-gray-500 mb-4">Grade 12 Teacher</p>
+                    <p class="text-gray-600 text-sm">ICT Teacher, guiding students in various software and hardware applications.</p>
+                </div>
+                <div class="faculty-card animate-fade-in-up delay-2000">
+                    <img src="https://assets.example.com/images/faculty/krismie-bastian.jpg" alt="Faculty Member 16" class="faculty-image">
+                    <h3 class="text-xl font-bold text-gray-800 mb-1">Ms. Krismie Bastian</h3>
+                    <p class="text-gray-500 mb-4">Grade 11 Teacher</p>
+                    <p class="text-gray-600 text-sm">Math Teacher, making numbers and logic enjoyable.</p>
+                </div>
+                <div class="faculty-card animate-fade-in-up delay-2100">
+                    <img src="https://assets.example.com/images/faculty/mayann-balingkit.jpg" alt="Faculty Member 17" class="faculty-image">
+                    <h3 class="text-xl font-bold text-gray-800 mb-1">Ms. May Ann Balingkit</h3>
+                    <p class="text-gray-500 mb-4">Grade 11 Teacher</p>
+                    <p class="text-gray-600 text-sm">Science Teacher, inspiring curiosity about the natural world.</p>
+                </div>
+                <div class="faculty-card animate-fade-in-up delay-2200">
+                    <img src="https://assets.example.com/images/faculty/cherry-calonia.jpg" alt="Faculty Member 18" class="faculty-image">
+                    <h3 class="text-xl font-bold text-gray-800 mb-1">Ms. Cherry Calonia</h3>
+                    <p class="text-gray-500 mb-4">School Registrar</p>
+                    <p class="text-gray-600 text-sm">Managing student records and enrollment processes.</p>
+                </div>
+
+                 <div class="faculty-card animate-fade-in-up delay-1000">
+                    <img src="images/lovely.jpg" alt="Faculty Member 6" class="faculty-image">
+                    <h3 class="text-xl font-bold text-gray-800 mb-1">Ms. Lovely Llagas</h3>
+                    <p class="text-gray-500 mb-4">Human Resource</p>
+                    <p class="text-gray-600 text-sm">Managing staff welfare and school human capital.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer id="contact" class="bg-gray-800 text-white py-8 rounded-t-3xl">
+        <div class="container text-center">
+            <p class="text-sm">&copy; 2025 SVNHS. All rights reserved.</p>
+            <p class="mt-2 text-sm">Contact us: <a href="sanvicente.panabo@deped.gov.ph" class="text-blue-400 hover:underline">sanvicente.panabo@deped.gov.ph</a> | (084)-823-3275</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const header = document.querySelector('header');
+
+            // Header scroll effect
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+
+            // Dynamic delay application for fade-in-up
+            const facultyCards = document.querySelectorAll('.faculty-card');
+            facultyCards.forEach((card, index) => {
+                // Start delays from 300ms (already set for principal), then increment by 100ms
+                card.style.animationDelay = `${300 + (index * 100)}ms`;
+            });
+        });
+    </script>
+</body>
+</html>
