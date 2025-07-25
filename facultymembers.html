@@ -132,15 +132,57 @@
                     San Vicente National High School
                 </a>
             </h1>
-            <nav>
-                <ul class="flex space-x-6">
-                   <li><a href="#home" class="text-gray-600 hover:text-blue-500 transition duration-300">Home</a></li>
-                    <li><a href="#strands" class="text-gray-600 hover:text-blue-500 transition duration-300">Senior High School </a></li>
-                    <li><a href="enrollment.html" class="text-gray-600 hover:text-blue-500 transition duration-300 font-semibold">Enroll</a></li>
-                     <li><a href="enrollmentprocess.html" class="text-gray-600 hover:text-blue-500 transition duration-300">Enrollment Guide</a></li>
-                    <li><a href="facultymembers.html" class="text-gray-600 hover:text-blue-500 transition duration-300">Faculty</a></li>
-                    <li><a href="contact.html" class="text-gray-600 hover:text-blue-500 transition duration-300">Contact</a></li> </ul>
-            </nav>
+            <nav class="container mx-auto flex justify-between items-center py-4 px-4 relative z-50">
+    <!-- Logo -->
+    <div class="text-2xl font-bold text-indigo-700 font-poppins">SVNHS</div>
+
+    <!-- Mobile Menu Button (Hamburger) -->
+    <button id="mobile-menu-button" class="md:hidden text-gray-700 focus:outline-none">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+    </button>
+
+    <!-- Desktop Navigation Links -->
+    <ul class="hidden md:flex space-x-6 items-center">
+        <li><a href="#home" class="text-gray-600 hover:text-blue-500 transition duration-300 font-medium">Home</a></li>
+        <li><a href="#strands" class="text-gray-600 hover:text-blue-500 transition duration-300 font-medium">Senior High School</a></li>
+        <li><a href="enrollment.html" class="text-gray-600 hover:text-blue-500 transition duration-300 font-semibold">Enroll</a></li>
+        <li><a href="enrollmentprocess.html" class="text-gray-600 hover:text-blue-500 transition duration-300 font-medium">Enrollment Guide</a></li>
+        <li><a href="facultymembers.html" class="text-gray-600 hover:text-blue-500 transition duration-300 font-medium">Faculty</a></li>
+        <li><a href="contact.html" class="text-gray-600 hover:text-blue-500 transition duration-300 font-medium">Contact</a></li>
+    </ul>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-white shadow-lg py-4 z-40 rounded-b-lg">
+        <ul class="flex flex-col space-y-4 px-4">
+            <li><a href="#home" class="block text-gray-700 hover:text-blue-500 transition duration-300 py-2">Home</a></li>
+            <li><a href="#strands" class="block text-gray-700 hover:text-blue-500 transition duration-300 py-2">Senior High School</a></li>
+            <li><a href="enrollment.html" class="block text-gray-700 hover:text-blue-500 transition duration-300 py-2 font-semibold">Enroll</a></li>
+            <li><a href="enrollmentprocess.html" class="block text-gray-700 hover:text-blue-500 transition duration-300 py-2">Enrollment Guide</a></li>
+            <li><a href="facultymembers.html" class="block text-gray-700 hover:text-blue-500 transition duration-300 py-2">Faculty</a></li>
+            <li><a href="contact.html" class="block text-gray-700 hover:text-blue-500 transition duration-300 py-2">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden'); // Toggle visibility of the mobile menu
+        });
+
+        // Optional: Close mobile menu when a link is clicked (for single-page navigation)
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+    });
+</script>
         </div>
     </header>
 
